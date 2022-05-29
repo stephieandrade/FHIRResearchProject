@@ -1,0 +1,21 @@
+version: "3.3"
+
+networks:
+  research:
+
+services:
+  # Research service
+  researcherData:
+    image: app.jar
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./src/main/resources/Dockerfile
+    container_name: researcherData
+    ports:
+      - "8080:8080"
+    networks:
+      - research
+
+
+
