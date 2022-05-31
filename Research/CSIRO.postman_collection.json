@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "a4180d22-d860-4344-8922-8b180ad9f113",
+		"name": "CSIRO",
+		"description": "API designed to convert two document examples to FHIR Diagnostic Resource JSON format.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JSON converter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"patientId\": \"A0001\",\r\n        \"differentialDiagnosis\": [],\r\n        \"confirmedDiagnosis\": \"Gitelman's syndrome\",\r\n        \"test_type\": \"exome\",\r\n        \"test_date\": \"2021-04-13T19:15:42.510Z\"\r\n    },\r\n    {\r\n        \"patientId\": \"A0002\",\r\n        \"differentialDiagnosis\": [\r\n            \"Distal renal tubular acidosis\",\r\n            \"Sjogren syndrome\"\r\n        ],\r\n        \"confirmedDiagnosis\": \"\",\r\n        \"test_type\": \"whole genome\",\r\n        \"test_date\": \"2020-01-23T10:25:43.411Z\"\r\n    },\r\n    {\r\n        \"patientId\": \"A0003\",\r\n        \"differentialDiagnosis\": [],\r\n        \"confirmedDiagnosis\": \"IgA glomerulonephritis\",\r\n        \"test_type\": \"panel\",\r\n        \"test_date\": \"2021-01-20T12:25:43.321Z\"\r\n    }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reports/converter/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reports",
+						"converter",
+						"json"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "JSON converter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"patientId\": \"A0001\",\r\n        \"differentialDiagnosis\": [],\r\n        \"confirmedDiagnosis\": \"Gitelman's syndrome\",\r\n        \"test_type\": \"exome\",\r\n        \"test_date\": \"2021-04-13T19:15:42.510Z\"\r\n    },\r\n    {\r\n        \"patientId\": \"A0002\",\r\n        \"differentialDiagnosis\": [\r\n            \"Distal renal tubular acidosis\",\r\n            \"Sjogren syndrome\"\r\n        ],\r\n        \"confirmedDiagnosis\": \"\",\r\n        \"test_type\": \"whole genome\",\r\n        \"test_date\": \"2020-01-23T10:25:43.411Z\"\r\n    },\r\n    {\r\n        \"patientId\": \"A0003\",\r\n        \"differentialDiagnosis\": [],\r\n        \"confirmedDiagnosis\": \"IgA glomerulonephritis\",\r\n        \"test_type\": \"panel\",\r\n        \"test_date\": \"2021-01-20T12:25:43.321Z\"\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reports/converter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reports",
+								"converter"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1486"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 May 2022 12:03:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"conclusion\":\"Gitelman syndrome\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"A0001\"},\"specimen\":[{\"reference\":\"Whole exome sequence analysis \"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"707756004\",\"display\":\"Gitelman syndrome\"}]}],\"issued\":\"2021-04-13T21:15:42.510+02:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"final\"}, {\"conclusion\":\"Not found\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"A0002\"},\"specimen\":[{\"reference\":\"Not found\"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"Not found\",\"display\":\"Not found\"}]}],\"issued\":\"2020-01-23T11:25:43.411+01:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"unknown\"}, {\"conclusion\":\"IgA glomerulonephritis\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"A0003\"},\"specimen\":[{\"reference\":\"Genetic analysis discrete result panel\"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"236407003\",\"display\":\"IgA glomerulonephritis\"}]}],\"issued\":\"2021-01-20T13:25:43.321+01:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"final\"}]"
+				}
+			]
+		},
+		{
+			"name": "CSV converter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/HP/Documents/Cursos/CSIRO/ResearcherData/ResearcherData/src/main/resources/static/DataCSV.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/reports/converter/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reports",
+						"converter",
+						"csv"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CSV converter",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/HP/Documents/Cursos/CSIRO/ResearcherData/ResearcherData/src/main/resources/static/DataCSV.csv"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reports/converter/csv",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reports",
+								"converter",
+								"csv"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2049"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 26 May 2022 15:56:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"conclusion\":\"Gitelman syndrome\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"897761\"},\"specimen\":[{\"reference\":\"Whole genome sequence analysis\"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"707756004\",\"display\":\"Gitelman syndrome\"}]}],\"issued\":\"2019-03-12T00:00:00.000+01:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"final\"}, {\"conclusion\":\"Not found\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"999871\"},\"specimen\":[{\"reference\":\"Whole genome sequence analysis\"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"Not found\",\"display\":\"Not found\"}]}],\"issued\":\"2021-12-01T00:00:00.000+01:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"unknown\"}, {\"conclusion\":\"Congenital nephrotic syndrome\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"234234\"},\"specimen\":[{\"reference\":\"Whole exome sequence analysis \"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"48796009\",\"display\":\"Congenital nephrotic syndrome\"}]}],\"issued\":\"2020-12-03T00:00:00.000+01:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"final\"}, {\"conclusion\":\"Distal renal tubular acidosis\",\"code\":{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"display\":\"Differential Diagnosis\"}]},\"subject\":{\"id\":\"332333\"},\"specimen\":[{\"reference\":\"Genetic analysis discrete result panel\"}],\"implicitRules\":\"https://www.hl7.org/fhir/diagnosticreport.html\",\"language\":\"english\",\"category\":[{\"coding\":[{\"system\":\"http://snomed.info/sct\",\"code\":\"236461000\",\"display\":\"Distal renal tubular acidosis\"}]}],\"issued\":\"2021-02-02T00:00:00.000+01:00\",\"resourceType\":\"DiagnosticReport\",\"status\":\"final\"}]"
+				}
+			]
+		}
+	]
+}
